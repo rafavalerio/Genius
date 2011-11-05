@@ -1,7 +1,9 @@
+
 <html>
 	<head>
 		<title>Genius</title>
-		<script src="jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="queue.js"></script>
 		<script type="text/javascript" src="genius.js"></script>
 		<link rel="stylesheet" href="style.css" />
 	</head>
@@ -9,13 +11,13 @@
 		<div class="container">
 			<p class="title">Genius</p>
 			<div id="genius">
-				<div id="quadro1"></div>
-				<div id="quadro2"></div>
-				<div id="quadro3"></div>
-				<div id="quadro4"></div>
+				<div class="frame" rel="1"></div>
+				<div class="frame" rel="2"></div>
+				<div class="frame" rel="3"></div>
+				<div class="frame" rel="4"></div>
 			</div>
-			<div id="iniciar">Começar</div>
-			<div id="reiniciar" class="disabled">Zerar</div>
+			<div id="start">Come&ccedil;ar</div>
+			<div id="restart" class="disabled">Zerar</div>
 		</div>	
 	</body>
 </html>
