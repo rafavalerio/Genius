@@ -13,7 +13,12 @@ function Queue() {
     };
     
     this.next = function() {
-    	if (++(this.idQ) < this.arrQ.length)
-    		this.run();
+	    if (++(this.idQ) < this.arrQ.length)
+		    this.run();
     };
+    
+    this.clear = function() {
+        this.idQ = 0;
+        this.arrQ.splice(0, this.arrQ.length);
+    }
 };
