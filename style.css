@@ -40,21 +40,25 @@ p.title {
 #genius .frame[rel="1"] {
 	background: #39D32C;
 	float: left;
+	border-top-left-radius: 100px;
 }
 
 #genius .frame[rel="2"] {
 	background: #F00;
 	float: right;
+	border-top-right-radius: 100px;
 }
 
 #genius .frame[rel="3"] {
 	background: #FCE53A;
 	float: left;
+	border-bottom-left-radius: 100px;
 }
 
 #genius .frame[rel="4"] {
 	background: #00F;
 	float: right;
+	border-bottom-right-radius: 100px;
 }
 
 #start {
