@@ -1,27 +1,54 @@
 $(document).ready(function() { 
 
-	var jogadas = new Array();
-	
-	$("#iniciar").click(function(){
-		iniciaContador();
+	$("#start").click(function(){
+		startGame();
 	});
 	
-	$("#reiniciar").click(function(){
-		if(!$("#reiniciar").hasClass("disabled"))
-			resetaJogadas();
+	$("#restart").click(function(){
+		if(!$("#restart").hasClass("disabled"))
+			resetGame();
 	});
 	
-	function iniciaContador() {
-		var rand = Math.floor(Math.random()*5)
-		jogadas.push(rand);
-		$("#reiniciar").removeClass("disabled");
-		alert(jogadas);
-	}
-	
-	function resetaJogadas() {
-		$("#reiniciar").addClass("disabled");
-		alert("Começando de novo!");
-		jogadas.splice(0, jogadas.length);
-	}
-	
+	$(".frame").click(function(){
+	    if (openClick)
+	        blink($(this).attr("rel"));
+	})
 });
+
+var openClick = false;
+var moves = new Array();
+var queue = new Queue();
+
+function startGame() {
+	var rand = Math.floor(Math.random()*4)+1;
+	moves.push(rand);
+	executeMoves();
+	
+	$("#reiniciar").removeClass("disabled");
+}
+
+function resetGame() {
+	$("#restart").addClass("disabled");
+	moves.splice(0, moves.length);
+}
+
+
+function executeMoves() {
+    queue.add(function(){ openClick = false; queue.next(); });
+    for(var i=0; i<moves.length; i++)
+        queue.add(fnBlink(moves[i]));
+        
+    queue.add(function(){ openClick = true; queue.next(); });
+}
+
+function fnBlink(i) {
+    return function(){
+        $('.frame[rel="'+i+'"]').animate({ opacity:1 },100);
+        $('.frame[rel="'+i+'"]').animate({ opacity:0.35 },300, function(){ queue.next(); });
+    };        
+}
+
+function blink(i) {
+    (fnBlink(i))();
+}
+
