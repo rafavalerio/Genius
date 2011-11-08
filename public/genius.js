@@ -60,9 +60,11 @@ function executeMoves() {
 
 function fnBlink(frmi) {
     return function(){
-        $('audio[rel="'+frmi+'"]')[0].play();
+        var audio = $('audio[rel="'+frmi+'"]')[0];
+        audio.currentTime=0;
+        audio.play();
         $('.frame[rel="'+frmi+'"]').animate({ opacity:1 },100);
-        $('.frame[rel="'+frmi+'"]').animate({ opacity:0.35 },300, function(){ queue.next(); });
+        $('.frame[rel="'+frmi+'"]').animate({ opacity:0.35 },300, function(){ audio.pause(); queue.next(); });
     };        
 }
 
