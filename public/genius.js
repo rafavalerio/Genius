@@ -11,8 +11,18 @@ $(document).ready(function() {
 	
 	$(".frame").click(function(){
 	    if (openClick)
-	        verifyUserClick($(this));
+	        verifyUserClick($(this).attr('rel'));
 	        
+	})
+	
+	$(document).keyup(function(event){
+	    if (openClick)
+    	    switch(event.which) {
+                case 87: verifyUserClick(1); break; // verde W-01
+                case 69: verifyUserClick(2); break; // vermelho E-02
+                case 83: verifyUserClick(3); break; // amarelo S-03
+                case 68: verifyUserClick(4); break; // azul D-04
+    	    }
 	})
 });
 
@@ -27,6 +37,7 @@ function startGame() {
 }
 
 function resetGame() {
+    openClick = false;
 	$("#restart").addClass("disabled");
 	moves.splice(0, moves.length);
 }
@@ -49,6 +60,7 @@ function executeMoves() {
 
 function fnBlink(frmi) {
     return function(){
+        $('audio[rel="'+frmi+'"]')[0].play();
         $('.frame[rel="'+frmi+'"]').animate({ opacity:1 },100);
         $('.frame[rel="'+frmi+'"]').animate({ opacity:0.35 },300, function(){ queue.next(); });
     };        
@@ -59,8 +71,8 @@ function blink(frmi) {
 }
 
 function verifyUserClick(frame) {
-    blink(frame.attr("rel"));
-    if (frame.attr("rel") == moves[user]) {
+    blink(frame);
+    if (frame == moves[user]) {
         if (++user == moves.length)
             setTimeout(newMove, 700);
     } else {
