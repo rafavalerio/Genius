@@ -1,19 +1,30 @@
+@media (min-width:800px) {
+    body {
+        background-color:#444 !important;
+    }
+    #genius .frame span {
+        display:block !important;
+        opacity:0.7;
+        -moz-opacity: 0.7;
+    }
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	background: #F2F2F2;	
+	background: #000;	
 }
 
 .container {
 	width: 220px;
-	margin: 200px auto;
+	margin: 0 auto;
 }
 
 p.title {
 	margin: 5px;
 	padding: 0;
 	font-family: verdana;
-	color: #555;
+	color: #FFF;
 	font-size: 45px;
 	font-weight: bold;
 	text-shadow: 0 1px 1px #fff;
@@ -28,6 +39,10 @@ p.title {
 #genius .frame {
 	width: 100px;
 	height: 100px;
+	line-height:100px;
+	text-align:center;
+	font-size: 25px;
+	color: #000;
 	margin: 5px;
 	cursor: pointer;
 	-webkit-border-radius: 5px;
@@ -35,6 +50,10 @@ p.title {
 	
 	opacity:0.35;
     -moz-opacity: 0.35;
+}
+
+#genius .frame span {
+    display:none;
 }
 
 #genius .frame[rel="1"] {
